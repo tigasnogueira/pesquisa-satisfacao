@@ -23,9 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cliente", "Cliente", "{B31F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pesquisa", "Pesquisa", "{F5AB09B9-02EB-4622-A689-1C158FEB3A6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pesquisa.ClientApi", "Pesquisa.ClientApi\Pesquisa.ClientApi.csproj", "{88568869-DD66-4880-AB87-B41AEE2C6996}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pesquisa.ClientApi", "Pesquisa.ClientApi\Pesquisa.ClientApi.csproj", "{88568869-DD66-4880-AB87-B41AEE2C6996}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pesquisa.SurveyApi", "Pesquisa.SurveyApi\Pesquisa.SurveyApi.csproj", "{13836692-F75A-4E2C-BF16-6FEBE6B14742}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pesquisa.SurveyApi", "Pesquisa.SurveyApi\Pesquisa.SurveyApi.csproj", "{13836692-F75A-4E2C-BF16-6FEBE6B14742}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

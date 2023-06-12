@@ -8,14 +8,15 @@
 
   <ItemGroup>
     <Folder Include="Configuration\" />
-    <Folder Include="Context\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="Mappings\" />
-    <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Services\" />
-    <Folder Include="Repository\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pesquisa.Core\Pesquisa.Core.csproj" />
   </ItemGroup>
 
 </Project>
