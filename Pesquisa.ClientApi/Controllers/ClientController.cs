@@ -1,26 +1,73 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Pesquisa.ClientApi.Interfaces;
+using Pesquisa.ClientApi.Models;
 
 namespace Pesquisa.ClientApi.Controllers;
 
-public class ClientController : Controller
+[ApiController]
+[Route("api/[controller]/client")]
+public class ClientController : ControllerBase
 {
-    public IActionResult Index()
+    private readonly IClientService _clientService;
+
+    public ClientController(IClientService clientService)
     {
-        return View();
+        _clientService = clientService;
     }
 
-    public IActionResult Create()
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<ClientModel>>> GetClients()
     {
-        return View();
+        var clients = await _clientService.GetClientsAsync();
+        return Ok(clients);
     }
 
-    public IActionResult Update()
+    [HttpGet("{id}")]
+    public async Task<ActionResult<ClientModel>> GetClient(Guid id)
     {
-        return View();
+        var client = await _clientService.GetClientAsync(id);
+        if (client == null)
+        {
+            return NotFound();
+        }
+        return Ok(client);
     }
 
-    public IActionResult Delete()
+    [HttpPost]
+    public async Task<ActionResult<ClientModel>> CreateClient(ClientModel client)
     {
-        return View();
+        var createdClient = await _clientService.CreateClientAsync(client);
+        return CreatedAtAction(nameof(GetClient), new { id = createdClient.Id }, createdClient);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult<ClientModel>> UpdateClient(Guid id, ClientModel client)
+    {
+        if (id != client.Id)
+        {
+            return BadRequest();
+        }
+
+        var existingClient = await _clientService.GetClientAsync(id);
+        if (existingClient == null)
+        {
+            return NotFound();
+        }
+
+        await _clientService.UpdateClientAsync(client);
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<ClientModel>> DeleteClient(Guid id)
+    {
+        var existingClient = await _clientService.GetClientAsync(id);
+        if (existingClient == null)
+        {
+            return NotFound();
+        }
+
+        await _clientService.DeleteClientAsync(id);
+        return NoContent();
     }
 }
