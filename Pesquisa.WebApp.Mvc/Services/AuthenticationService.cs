@@ -5,11 +5,11 @@ using Pesquisa.WebApp.Mvc.Models;
 
 namespace Pesquisa.WebApp.Mvc.Services
 {
-    public class AutenticationService : Services, IAutenticationService
+    public class AuthenticationService : Services, IAuthenticationService
     {
         private readonly HttpClient _httpClient;
 
-        public AutenticationService(HttpClient httpClient,
+        public AuthenticationService(HttpClient httpClient,
                                     IOptions<AppSettings> settings)
         {
             httpClient.BaseAddress = new Uri(settings.Value.AutenticationUrl);

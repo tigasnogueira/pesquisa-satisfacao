@@ -2,7 +2,7 @@
 
 namespace Pesquisa.WebApp.Mvc.Interfaces;
 
-public interface IAutenticationService
+public interface IAuthenticationService
 {
     Task<UserResponseLogin> Login(UserLogin userLogin);
 

@@ -10,9 +10,9 @@ namespace Pesquisa.WebApp.Mvc.Controllers;
 
 public class IdentityController : MainController
 {
-    private readonly IAutenticationService _autenticationService;
+    private readonly Interfaces.IAuthenticationService _autenticationService;
 
-    public IdentityController(IAutenticationService autenticationService)
+    public IdentityController(Interfaces.IAuthenticationService autenticationService)
     {
         _autenticationService = autenticationService;
     }
