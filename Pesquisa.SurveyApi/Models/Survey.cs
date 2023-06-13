@@ -9,7 +9,7 @@ public class SurveyModel : EntityModel
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
     public DateTime? DeletedAt { get; set; }
-    public bool Active { get; set; }
+    public bool IsActive { get; set; }
     public bool Deleted { get; set; }
     public ICollection<QuestionModel> Questions { get; set; }
 
@@ -41,13 +41,13 @@ public class SurveyModel : EntityModel
 
     public void Activate()
     {
-        Active = true;
+        IsActive = true;
         UpdatedAt = DateTime.Now;
     }
 
     public void Deactivate()
     {
-        Active = false;
+        IsActive = false;
         UpdatedAt = DateTime.Now;
     }
 

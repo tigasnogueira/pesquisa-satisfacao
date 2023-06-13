@@ -11,25 +11,25 @@ public class QuestionModel : EntityModel
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
     public DateTime? DeletedAt { get; set; }
-    public bool Active { get; set; }
+    public bool IsActive { get; set; }
     public bool Deleted { get; set; }
     public Guid SurveyId { get; set; }
     public SurveyModel Survey { get; set; }
 
     public QuestionModel()
     {
-        Active = true;
+        IsActive = true;
     }
 
     public void Activate()
     {
-        Active = true;
+        IsActive = true;
         UpdatedAt = DateTime.Now;
     }
 
     public void Deactivate()
     {
-        Active = false;
+        IsActive = false;
         UpdatedAt = DateTime.Now;
     }
 
