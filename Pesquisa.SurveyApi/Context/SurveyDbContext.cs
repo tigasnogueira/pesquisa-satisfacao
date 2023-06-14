@@ -9,10 +9,6 @@ public class SurveyDbContext : DbContext
     {
     }
 
-    public DbSet<SurveyModel> Surveys { get; set; }
-
-    public DbSet<QuestionModel> Questions { get; set; }
-
     public DbSet<EvaluationModel> Evaluations { get; set; }
 
     public DbSet<CustomerModel> Customers { get; set; }
