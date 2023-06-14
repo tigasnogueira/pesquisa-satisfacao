@@ -9,7 +9,7 @@ public static class DependencyInjectionConfig
 {
     public static IServiceCollection ResolveDependencies(this IServiceCollection services)
     {
-        services.AddScoped<ClientContext>();
+        services.AddScoped<ClientDbContext>();
         services.AddScoped<IClientRepository, ClientRepository>();
         services.AddScoped<IClientService, ClientService>();
 

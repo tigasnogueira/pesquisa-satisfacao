@@ -7,9 +7,9 @@ namespace Pesquisa.ClientApi.Repository;
 
 public class ClientRepository : IClientRepository
 {
-    private readonly ClientContext _context;
+    private readonly ClientDbContext _context;
 
-    public ClientRepository(ClientContext context)
+    public ClientRepository(ClientDbContext context)
     {
         _context = context;
     }

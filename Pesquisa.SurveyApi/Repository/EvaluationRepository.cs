@@ -36,7 +36,7 @@ public class EvaluationRepository : IEvaluationRepository
         return _dbContext.Evaluations.Where(e => e.EvaluationDate.Month == month && e.EvaluationDate.Year == year).ToList();
     }
 
-    public IEnumerable<EvaluationModel> GetEvaluationsByCustomerId(int customerId)
+    public IEnumerable<EvaluationModel> GetEvaluationsByCustomerId(Guid customerId)
     {
         return _dbContext.Evaluations.Where(e => e.CustomerId == customerId).ToList();
     }

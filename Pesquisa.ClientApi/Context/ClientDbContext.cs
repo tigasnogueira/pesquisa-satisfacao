@@ -3,9 +3,9 @@ using Pesquisa.ClientApi.Models;
 
 namespace Pesquisa.ClientApi.Context;
 
-public class ClientContext : DbContext
+public class ClientDbContext : DbContext
 {
-    public ClientContext(DbContextOptions<ClientContext> options) : base(options)
+    public ClientDbContext(DbContextOptions<ClientDbContext> options) : base(options)
     {
     }
 
@@ -13,7 +13,7 @@ public class ClientContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ClientContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ClientDbContext).Assembly);
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

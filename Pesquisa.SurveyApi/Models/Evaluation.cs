@@ -5,7 +5,7 @@ namespace Pesquisa.SurveyApi.Models;
 public class EvaluationModel : EntityModel
 {
     public DateTime EvaluationDate { get; set; }
-    public int CustomerId { get; set; }
+    public Guid CustomerId { get; set; }
     public CustomerModel Customer { get; set; }
     public int Score { get; set; }
     public string Reason { get; set; }

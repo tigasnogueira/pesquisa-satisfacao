@@ -8,6 +8,6 @@ public interface IEvaluationService
     IEnumerable<EvaluationModel> GetEvaluations();
     EvaluationModel GetEvaluationById(Guid id);
     IEnumerable<EvaluationModel> GetEvaluationsByMonthAndYear(int month, int year);
-    IEnumerable<EvaluationModel> GetEvaluationsByCustomerId(int customerId);
+    IEnumerable<EvaluationModel> GetEvaluationsByCustomerId(Guid customerId);
     decimal CalculateNPS(int month, int year);
 }

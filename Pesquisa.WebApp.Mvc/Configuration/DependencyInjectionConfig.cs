@@ -4,9 +4,9 @@ using Pesquisa.WebApp.Mvc.Services;
 
 namespace Pesquisa.WebApp.Mvc.Configuration;
 
-public class DependencyInjectionConfig
+public static class DependencyInjectionConfig
 {
-    public static void RegisterServices(IServiceCollection services)
+    public static void RegisterServices(this IServiceCollection services)
     {
         services.AddHttpClient<IAuthenticationService, AuthenticationService>();
 

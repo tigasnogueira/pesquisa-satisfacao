@@ -50,7 +50,7 @@ public class EvaluationController : ControllerBase
     }
 
     [HttpGet("customer/{customerId}")]
-    public IActionResult GetEvaluationsByCustomerId(int customerId)
+    public IActionResult GetEvaluationsByCustomerId(Guid customerId)
     {
         var evaluations = _evaluationService.GetEvaluationsByCustomerId(customerId);
         return Ok(evaluations);

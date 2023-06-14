@@ -14,7 +14,7 @@ public class CustomerMapping : IEntityTypeConfiguration<CustomerModel>
         builder.Property(c => c.CNPJ).IsRequired().HasMaxLength(14);
         builder.Property(c => c.Email).IsRequired().HasMaxLength(100);
         builder.Property(c => c.Phone).HasMaxLength(20);
-        builder.Property(c => c.Address).HasMaxLength(100);
+        builder.Property(c => c.Address).HasMaxLength(200);
         builder.Property(c => c.City).HasMaxLength(100);
         builder.Property(c => c.State).HasMaxLength(100);
         builder.Property(c => c.PostalCode).HasMaxLength(8);

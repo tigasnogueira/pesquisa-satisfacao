@@ -12,11 +12,11 @@ public class ClientMapping : IEntityTypeConfiguration<ClientModel>
         builder.Property(c => c.Name).IsRequired().HasMaxLength(100);
         builder.Property(c => c.Email).IsRequired().HasMaxLength(100);
         builder.Property(c => c.Phone).HasMaxLength(20);
-        builder.Property(c => c.Address).IsRequired();
-        builder.Property(c => c.City).IsRequired().HasMaxLength(100);
+        builder.Property(c => c.Address).HasMaxLength(200);
+        builder.Property(c => c.City).HasMaxLength(100);
         builder.Property(c => c.State).HasMaxLength(100);
-        builder.Property(c => c.Country).IsRequired().HasMaxLength(100);
-        builder.Property(c => c.PostalCode).IsRequired().HasMaxLength(100);
+        builder.Property(c => c.Country).HasMaxLength(100);
+        builder.Property(c => c.PostalCode).HasMaxLength(100);
         builder.Property(c => c.Notes).HasMaxLength(500);
         builder.Property(c => c.IsActive).IsRequired();
         builder.Property(c => c.CreatedAt).IsRequired();

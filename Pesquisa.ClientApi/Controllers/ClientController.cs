@@ -5,7 +5,7 @@ using Pesquisa.ClientApi.Models;
 namespace Pesquisa.ClientApi.Controllers;
 
 [ApiController]
-[Route("api/[controller]/client")]
+[Route("api/clients")]
 public class ClientController : ControllerBase
 {
     private readonly IClientService _clientService;

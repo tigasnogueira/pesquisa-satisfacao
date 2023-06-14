@@ -34,7 +34,7 @@ public class EvaluationService : IEvaluationService
         return _evaluationRepository.GetEvaluationsByMonthAndYear(month, year);
     }
 
-    public IEnumerable<EvaluationModel> GetEvaluationsByCustomerId(int customerId)
+    public IEnumerable<EvaluationModel> GetEvaluationsByCustomerId(Guid customerId)
     {
         return _evaluationRepository.GetEvaluationsByCustomerId(customerId);
     }
