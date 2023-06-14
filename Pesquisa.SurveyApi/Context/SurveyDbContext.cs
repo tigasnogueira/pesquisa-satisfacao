@@ -13,6 +13,11 @@ public class SurveyDbContext : DbContext
 
     public DbSet<QuestionModel> Questions { get; set; }
 
+    public DbSet<EvaluationModel> Evaluations { get; set; }
+
+    public DbSet<CustomerModel> Customers { get; set; }
+
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(SurveyDbContext).Assembly);
