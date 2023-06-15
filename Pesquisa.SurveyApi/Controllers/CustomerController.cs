@@ -8,10 +8,12 @@ namespace Pesquisa.SurveyApi.Controllers;
 [Route("api/customers")]
 public class CustomerController : ControllerBase
 {
+    private readonly ILogger<CustomerController> _logger;
     private readonly CustomerService _customerService;
 
-    public CustomerController(CustomerService customerService)
+    public CustomerController(ILogger<CustomerController> logger, CustomerService customerService)
     {
+        _logger = logger;
         _customerService = customerService;
     }
 
@@ -23,6 +25,8 @@ public class CustomerController : ControllerBase
             return Conflict("CNPJ já cadastrado");
         }
 
+        _logger.LogInformation("Creating customer {0}", customer.CustomerName);
+
         var createdCustomer = _customerService.CreateCustomer(customer);
         return CreatedAtAction(nameof(GetCustomerById), new { id = createdCustomer.Id }, createdCustomer);
     }
@@ -30,6 +34,8 @@ public class CustomerController : ControllerBase
     [HttpGet]
     public IActionResult GetCustomers()
     {
+        _logger.LogInformation("Getting all customers");
+
         var customers = _customerService.GetCustomers();
         return Ok(customers);
     }
@@ -44,12 +50,16 @@ public class CustomerController : ControllerBase
             return NotFound();
         }
 
+        _logger.LogInformation("Getting customer {0}", customer.Id);
+
         return Ok(customer);
     }
 
     [HttpGet("search")]
     public IActionResult SearchCustomersByName(string name)
     {
+        _logger.LogInformation("Searching customers by name {0}", name);
+
         var customers = _customerService.SearchCustomersByName(name);
         return Ok(customers);
     }
@@ -69,6 +79,8 @@ public class CustomerController : ControllerBase
 
         _customerService.UpdateCustomer(existingCustomer);
 
+        _logger.LogInformation("Updating customer {0}", existingCustomer.Id);
+
         return NoContent();
     }
 
@@ -83,6 +95,8 @@ public class CustomerController : ControllerBase
         }
 
         _customerService.DeleteCustomer(customer);
+
+        _logger.LogInformation("Deleting customer {0}", customer.Id);
 
         return NoContent();
     }

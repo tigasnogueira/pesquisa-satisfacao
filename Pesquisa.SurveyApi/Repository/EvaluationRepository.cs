@@ -6,15 +6,19 @@ namespace Pesquisa.SurveyApi.Repository;
 
 public class EvaluationRepository : IEvaluationRepository
 {
+    private readonly ILogger<EvaluationRepository> _logger;
     private readonly SurveyDbContext _dbContext;
 
-    public EvaluationRepository(SurveyDbContext dbContext)
+    public EvaluationRepository(ILogger<EvaluationRepository> logger, SurveyDbContext dbContext)
     {
+        _logger = logger;
         _dbContext = dbContext;
     }
 
     public EvaluationModel CreateEvaluation(EvaluationModel evaluation)
     {
+        _logger.LogInformation($"Creating evaluation for customer {evaluation.CustomerId}");
+
         _dbContext.Evaluations.Add(evaluation);
         _dbContext.SaveChanges();
 
@@ -23,21 +27,29 @@ public class EvaluationRepository : IEvaluationRepository
 
     public IEnumerable<EvaluationModel> GetEvaluations()
     {
+        _logger.LogInformation("Getting all evaluations");
+
         return _dbContext.Evaluations.ToList();
     }
 
     public EvaluationModel GetEvaluationById(Guid id)
     {
+        _logger.LogInformation($"Getting evaluation with id {id}");
+
         return _dbContext.Evaluations.FirstOrDefault(e => e.Id == id);
     }
 
     public IEnumerable<EvaluationModel> GetEvaluationsByMonthAndYear(int month, int year)
     {
+        _logger.LogInformation($"Getting evaluations for month {month} and year {year}");
+
         return _dbContext.Evaluations.Where(e => e.EvaluationDate.Month == month && e.EvaluationDate.Year == year).ToList();
     }
 
     public IEnumerable<EvaluationModel> GetEvaluationsByCustomerId(Guid customerId)
     {
+        _logger.LogInformation($"Getting evaluations for customer {customerId}");
+
         return _dbContext.Evaluations.Where(e => e.CustomerId == customerId).ToList();
     }
 
@@ -52,6 +64,8 @@ public class EvaluationRepository : IEvaluationRepository
         {
             return 0;
         }
+
+        _logger.LogInformation($"Calculating NPS for month {month} and year {year}");
 
         return ((decimal)(promoters - detractors) / totalParticipants) * 100;
     }

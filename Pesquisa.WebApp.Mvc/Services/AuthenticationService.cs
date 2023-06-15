@@ -7,11 +7,14 @@ namespace Pesquisa.WebApp.Mvc.Services
 {
     public class AuthenticationService : Services, IAuthenticationService
     {
+        private readonly ILogger<AuthenticationService> _logger;
         private readonly HttpClient _httpClient;
 
-        public AuthenticationService(HttpClient httpClient,
-                                    IOptions<AppSettings> settings)
+        public AuthenticationService(ILogger<AuthenticationService> logger, HttpClient httpClient,
+                                    IOptions<AppSettings> settings) : base(logger)
         {
+            _logger = logger;
+
             httpClient.BaseAddress = new Uri(settings.Value.AutenticationUrl);
             
             _httpClient = httpClient;
@@ -31,6 +34,8 @@ namespace Pesquisa.WebApp.Mvc.Services
                 };
             }
 
+            _logger.LogInformation("Login service loaded");
+
             return await DeserializeObjectResponse<UserResponseLogin>(response);
         }
 
@@ -47,6 +52,8 @@ namespace Pesquisa.WebApp.Mvc.Services
                     ResponseResult = await DeserializeObjectResponse<ResponseResult>(response)
                 };
             }
+
+            _logger.LogInformation("Register service loaded");
 
             return await DeserializeObjectResponse<UserResponseLogin>(response);
         }

@@ -7,24 +7,30 @@ namespace Pesquisa.WebApp.Mvc.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger) : base(logger)
         {
             _logger = logger;
         }
 
         public IActionResult Index()
         {
+            _logger.LogInformation("Home page loaded");
+
             return View();
         }
 
         public IActionResult Privacy()
         {
+            _logger.LogInformation("Privacy page loaded");
+
             return View();
         }
 
         [Route("erro/{id:length(3,3)}")]
         public IActionResult Error(int id)
         {
+            _logger.LogError($"Erro: {id}");
+
             var modelErro = new ErrorViewModel();
 
             if (id == 500)

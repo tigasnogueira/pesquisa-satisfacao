@@ -10,10 +10,12 @@ namespace Pesquisa.WebApp.Mvc.Controllers;
 
 public class IdentityController : MainController
 {
+    private readonly ILogger<IdentityController> _logger;
     private readonly Interfaces.IAuthenticationService _autenticationService;
 
-    public IdentityController(Interfaces.IAuthenticationService autenticationService)
+    public IdentityController(ILogger<IdentityController> logger, Interfaces.IAuthenticationService autenticationService) : base(logger)
     {
+        _logger = logger;
         _autenticationService = autenticationService;
     }
 
@@ -21,6 +23,8 @@ public class IdentityController : MainController
     [Route("nova-conta")]
     public IActionResult Register()
     {
+        _logger.LogInformation("Register page selected");
+
         return View();
     }
 
@@ -28,6 +32,8 @@ public class IdentityController : MainController
     [Route("nova-conta")]
     public async Task<IActionResult> Register(UserRegister registerUserViewModel)
     {
+        _logger.LogInformation("Register page loaded");
+
         if (!ModelState.IsValid) return View(registerUserViewModel);
 
         var response = await _autenticationService.Register(registerUserViewModel);
@@ -43,6 +49,8 @@ public class IdentityController : MainController
     [Route("login")]
     public IActionResult Login(string returnUrl = null)
     {
+        _logger.LogInformation("Login page selected");
+
         ViewData["ReturnUrl"] = returnUrl;
         return View();
     }
@@ -51,6 +59,8 @@ public class IdentityController : MainController
     [Route("login")]
     public async Task<IActionResult> Login(UserLogin userLogin, string returnUrl = null)
     {
+        _logger.LogInformation("Login page loaded");
+
         ViewData["ReturnUrl"] = returnUrl;
         //if (!ModelState.IsValid) return View(usuarioLogin);
 
@@ -71,12 +81,16 @@ public class IdentityController : MainController
     [Route("sair")]
     public async Task<IActionResult> Logout()
     {
+        _logger.LogInformation("Logout page loaded");
+
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         return RedirectToAction("Index", "Home");
     }
 
     private async Task PerformLogin(UserResponseLogin response)
     {
+        _logger.LogInformation("Performing login");
+
         var token = GetFormattedToken(response.AccessToken);
 
         var claims = new List<Claim>();
@@ -98,6 +112,8 @@ public class IdentityController : MainController
 
     private string GetFormattedToken(string token)
     {
+        _logger.LogInformation("Getting formatted token");
+
         if (token.Contains("Bearer")) return token.Replace("Bearer ", "");
 
         return token;

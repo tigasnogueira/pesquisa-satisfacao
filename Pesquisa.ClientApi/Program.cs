@@ -3,6 +3,7 @@ using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using Pesquisa.ClientApi.Configuration;
 using Pesquisa.ClientApi.Context;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,15 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.ResolveDependencies();
 
 var app = builder.Build();
+
+// Configure Serilog
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .WriteTo.Console()
+    .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+app.UseSerilogRequestLogging(); // Para registrar informações de solicitações HTTP
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

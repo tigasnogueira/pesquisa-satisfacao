@@ -6,8 +6,17 @@ namespace Pesquisa.WebApp.Mvc.Services;
 
 public abstract class Services
 {
+    private readonly ILogger<Services> _logger;
+
+    public Services(ILogger<Services> logger)
+    {
+        _logger = logger;
+    }
+
     protected StringContent GetContent(object data)
     {
+        _logger.LogInformation("GetContent loaded");
+
         return new StringContent(
             JsonSerializer.Serialize(data),
             Encoding.UTF8,
@@ -20,6 +29,8 @@ public abstract class Services
         {
             PropertyNameCaseInsensitive = true
         };
+
+        _logger.LogInformation("DeserializeObjectResponse loaded");
 
         return JsonSerializer.Deserialize<T>(await responseMessage.Content.ReadAsStringAsync(), options);
     }
@@ -39,6 +50,9 @@ public abstract class Services
         }
 
         response.EnsureSuccessStatusCode();
+
+        _logger.LogInformation("HandleErrorsResponse loaded");
+
         return true;
     }
 }
