@@ -10,7 +10,7 @@ using Microsoft.Extensions.FileProviders;
 using System;
 using System.IO;
 
-namespace AppDesafio.Helpers;
+namespace Pesquisa.WebAppDesafio.Helpers;
 
 public static class EmailTemplates
 {

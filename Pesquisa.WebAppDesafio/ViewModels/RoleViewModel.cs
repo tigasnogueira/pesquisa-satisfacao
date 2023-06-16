@@ -5,15 +5,9 @@
 // ==> Gun4Hire: contact@ebenmonney.com
 // ======================================
 
-using AppDesafio.Helpers;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AppDesafio.ViewModels;
+namespace Pesquisa.WebAppDesafio.ViewModels;
 
 public class RoleViewModel
 {

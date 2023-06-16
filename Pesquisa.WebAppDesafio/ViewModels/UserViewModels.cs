@@ -5,15 +5,11 @@
 // ==> Gun4Hire: contact@ebenmonney.com
 // ======================================
 
-using AppDesafio.Helpers;
-using FluentValidation;
-using System;
-using System.Collections.Generic;
+using Pesquisa.WebAppDesafio.Helpers;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
 
-namespace AppDesafio.ViewModels;
+namespace Pesquisa.WebAppDesafio.ViewModels;
 
 public class UserViewModel : UserBaseViewModel
 {

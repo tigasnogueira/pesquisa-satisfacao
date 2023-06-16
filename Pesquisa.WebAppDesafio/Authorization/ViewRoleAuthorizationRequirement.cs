@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Pesquisa.IdentityApi.Core;
 using System.Threading.Tasks;
 
-namespace AppDesafio.Authorization;
+namespace Pesquisa.WebAppDesafio.Authorization;
 
 public class ViewRoleAuthorizationRequirement : IAuthorizationRequirement
 {

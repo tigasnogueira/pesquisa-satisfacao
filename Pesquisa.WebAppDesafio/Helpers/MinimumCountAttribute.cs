@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppDesafio.Helpers;
+namespace Pesquisa.WebAppDesafio.Helpers;
 
 [AttributeUsage(AttributeTargets.Property)]
 public sealed class MinimumCountAttribute : ValidationAttribute
@@ -57,6 +57,6 @@ public sealed class MinimumCountAttribute : ValidationAttribute
 
     public override string FormatErrorMessage(string name)
     {
-        return String.Format(this.ErrorMessageString, name, _minCount);
+        return string.Format(ErrorMessageString, name, _minCount);
     }
 }

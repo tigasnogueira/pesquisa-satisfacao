@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppDesafio.Helpers;
+namespace Pesquisa.WebAppDesafio.Helpers;
 
 public static class LoggingEvents
 {

@@ -8,7 +8,7 @@
 using System;
 using System.Linq;
 
-namespace AppDesafio.ViewModels;
+namespace Pesquisa.WebAppDesafio.ViewModels;
 
 public class ClaimViewModel
 {

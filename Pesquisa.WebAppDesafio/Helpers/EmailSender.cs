@@ -14,7 +14,7 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
-namespace AppDesafio.Helpers;
+namespace Pesquisa.WebAppDesafio.Helpers;
 
 public interface IEmailSender
 {
@@ -96,7 +96,7 @@ public class EmailSender : IEmailSender
             using (var client = new SmtpClient())
             {
                 if (!config.UseSSL)
-                    client.ServerCertificateValidationCallback = (object sender2, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) => true;
+                    client.ServerCertificateValidationCallback = (sender2, certificate, chain, sslPolicyErrors) => true;
 
                 await client.ConnectAsync(config.Host, config.Port, config.UseSSL).ConfigureAwait(false);
                 client.AuthenticationMechanisms.Remove("XOAUTH2");

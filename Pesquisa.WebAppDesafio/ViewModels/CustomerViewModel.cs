@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace AppDesafio.ViewModels;
+namespace Pesquisa.WebAppDesafio.ViewModels;
 
 public class CustomerViewModel
 {

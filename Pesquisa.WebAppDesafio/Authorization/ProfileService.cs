@@ -17,7 +17,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace AppDesafio.Authorization;
+namespace Pesquisa.WebAppDesafio.Authorization;
 
 public class ProfileService : IProfileService
 {
@@ -57,6 +57,6 @@ public class ProfileService : IProfileService
         var sub = context.Subject.GetSubjectId();
         var user = await _userManager.FindByIdAsync(sub);
 
-        context.IsActive = (user != null) && user.IsEnabled;
+        context.IsActive = user != null && user.IsEnabled;
     }
 }

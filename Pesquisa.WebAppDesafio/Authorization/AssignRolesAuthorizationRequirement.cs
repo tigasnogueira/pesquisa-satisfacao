@@ -11,7 +11,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace AppDesafio.Authorization;
+namespace Pesquisa.WebAppDesafio.Authorization;
 
 public class AssignRolesAuthorizationRequirement : IAuthorizationRequirement
 {

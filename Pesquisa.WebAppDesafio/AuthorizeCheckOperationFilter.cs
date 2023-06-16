@@ -16,7 +16,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppDesafio;
+namespace Pesquisa.WebAppDesafio;
 
 // Swagger IOperationFilter implementation that will decide which api action needs authorization
 internal class AuthorizeCheckOperationFilter : IOperationFilter

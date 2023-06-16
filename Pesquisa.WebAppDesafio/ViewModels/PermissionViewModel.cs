@@ -7,7 +7,7 @@
 
 using Pesquisa.IdentityApi.Core;
 
-namespace AppDesafio.ViewModels;
+namespace Pesquisa.WebAppDesafio.ViewModels;
 
 public class PermissionViewModel
 {

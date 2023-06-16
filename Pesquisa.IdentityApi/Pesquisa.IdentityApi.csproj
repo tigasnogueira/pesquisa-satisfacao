@@ -22,4 +22,8 @@
     <ProjectReference Include="..\Pesquisa.SurveyApi\Pesquisa.SurveyApi.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

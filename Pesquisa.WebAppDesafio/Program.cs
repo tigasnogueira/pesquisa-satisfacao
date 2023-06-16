@@ -5,8 +5,6 @@
 // ==> Gun4Hire: contact@ebenmonney.com
 // ======================================
 
-using AppDesafio.Authorization;
-using AppDesafio.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -27,13 +25,15 @@ using Pesquisa.IdentityApi.Models;
 using Pesquisa.IdentityApi.UoW;
 using Pesquisa.SurveyApi.Context;
 using Pesquisa.SurveyApi.UoW;
+using Pesquisa.WebAppDesafio.Authorization;
+using Pesquisa.WebAppDesafio.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
 using AppPermissions = Pesquisa.IdentityApi.Core.ApplicationPermissions;
 
-namespace AppDesafio;
+namespace Pesquisa.WebAppDesafio;
 
 public class Program
 {
@@ -61,10 +61,10 @@ public class Program
         string migrationsAssembly = typeof(Program).GetTypeInfo().Assembly.GetName().Name; //AppDesafio
 
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(connectionString, b => b.MigrationsAssembly(migrationsAssembly)));
+            options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Pesquisa.IdentityApi")));
 
         builder.Services.AddDbContext<SurveyDbContext>(options =>
-            options.UseSqlServer(connectionString, b => b.MigrationsAssembly(migrationsAssembly)));
+            options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Pesquisa.SurveyApi")));
 
         // add identity
         builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
@@ -120,14 +120,14 @@ public class Program
 
         builder.Services.AddAuthorization(options =>
         {
-            options.AddPolicy(Authorization.Policies.ViewAllUsersPolicy, policy => policy.RequireClaim(ClaimConstants.Permission, AppPermissions.ViewUsers));
-            options.AddPolicy(Authorization.Policies.ManageAllUsersPolicy, policy => policy.RequireClaim(ClaimConstants.Permission, AppPermissions.ManageUsers));
+            options.AddPolicy(Policies.ViewAllUsersPolicy, policy => policy.RequireClaim(ClaimConstants.Permission, AppPermissions.ViewUsers));
+            options.AddPolicy(Policies.ManageAllUsersPolicy, policy => policy.RequireClaim(ClaimConstants.Permission, AppPermissions.ManageUsers));
 
-            options.AddPolicy(Authorization.Policies.ViewAllRolesPolicy, policy => policy.RequireClaim(ClaimConstants.Permission, AppPermissions.ViewRoles));
-            options.AddPolicy(Authorization.Policies.ViewRoleByRoleNamePolicy, policy => policy.Requirements.Add(new ViewRoleAuthorizationRequirement()));
-            options.AddPolicy(Authorization.Policies.ManageAllRolesPolicy, policy => policy.RequireClaim(ClaimConstants.Permission, AppPermissions.ManageRoles));
+            options.AddPolicy(Policies.ViewAllRolesPolicy, policy => policy.RequireClaim(ClaimConstants.Permission, AppPermissions.ViewRoles));
+            options.AddPolicy(Policies.ViewRoleByRoleNamePolicy, policy => policy.Requirements.Add(new ViewRoleAuthorizationRequirement()));
+            options.AddPolicy(Policies.ManageAllRolesPolicy, policy => policy.RequireClaim(ClaimConstants.Permission, AppPermissions.ManageRoles));
 
-            options.AddPolicy(Authorization.Policies.AssignAllowedRolesPolicy, policy => policy.Requirements.Add(new AssignRolesAuthorizationRequirement()));
+            options.AddPolicy(Policies.AssignAllowedRolesPolicy, policy => policy.Requirements.Add(new AssignRolesAuthorizationRequirement()));
         });
 
         // Add cors

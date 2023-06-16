@@ -5,19 +5,19 @@
 // ==> Gun4Hire: contact@ebenmonney.com
 // ======================================
 
-using AppDesafio.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Pesquisa.IdentityApi.Core;
+using Pesquisa.WebAppDesafio.Helpers;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace AppDesafio.Authorization;
+namespace Pesquisa.WebAppDesafio.Authorization;
 
 public class UserAccountAuthorizationRequirement : IAuthorizationRequirement
 {
     public UserAccountAuthorizationRequirement(string operationName)
     {
-        this.OperationName = operationName;
+        OperationName = operationName;
     }
 
 
@@ -56,9 +56,9 @@ public class ManageUserAuthorizationHandler : AuthorizationHandler<UserAccountAu
     protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, UserAccountAuthorizationRequirement requirement, string targetUserId)
     {
         if (context.User == null ||
-            (requirement.OperationName != AccountManagementOperations.CreateOperationName &&
+            requirement.OperationName != AccountManagementOperations.CreateOperationName &&
              requirement.OperationName != AccountManagementOperations.UpdateOperationName &&
-             requirement.OperationName != AccountManagementOperations.DeleteOperationName))
+             requirement.OperationName != AccountManagementOperations.DeleteOperationName)
             return Task.CompletedTask;
 
         if (context.User.HasClaim(ClaimConstants.Permission, ApplicationPermissions.ManageUsers) || GetIsSameUser(context.User, targetUserId))

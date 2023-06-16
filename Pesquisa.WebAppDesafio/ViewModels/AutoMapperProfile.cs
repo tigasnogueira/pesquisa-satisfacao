@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Pesquisa.IdentityApi.Core;
 using Pesquisa.IdentityApi.Models;
 
-namespace AppDesafio.ViewModels;
+namespace Pesquisa.WebAppDesafio.ViewModels;
 
 public class AutoMapperProfile : Profile
 {

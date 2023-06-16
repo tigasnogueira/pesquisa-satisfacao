@@ -5,16 +5,11 @@
 // ==> Gun4Hire: contact@ebenmonney.com
 // ======================================
 
-using AppDesafio.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Pesquisa.WebAppDesafio.ViewModels;
 
-namespace AppDesafio.Helpers;
+namespace Pesquisa.WebAppDesafio.Helpers;
 
 public static class Extensions
 {

@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Pesquisa.IdentityApi.Context;
 using System.IO;
 
-namespace AppDesafio;
+namespace Pesquisa.WebAppDesafio;
 
 public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
 {

@@ -5,18 +5,18 @@
 // ==> Gun4Hire: contact@ebenmonney.com
 // ======================================
 
-using AppDesafio.Helpers;
-using AppDesafio.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Pesquisa.IdentityApi.UoW;
 using Pesquisa.SurveyApi.UoW;
+using Pesquisa.WebAppDesafio.Helpers;
+using Pesquisa.WebAppDesafio.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AppDesafio.Controllers;
+namespace Pesquisa.WebAppDesafio.Controllers;
 
 [Route("api/[controller]")]
 public class CustomerController : ControllerBase

@@ -11,7 +11,7 @@ using IdentityModel;
 using Pesquisa.IdentityApi.Core;
 using System.Collections.Generic;
 
-namespace AppDesafio;
+namespace Pesquisa.WebAppDesafio;
 
 public class IdentityServerConfig
 {
