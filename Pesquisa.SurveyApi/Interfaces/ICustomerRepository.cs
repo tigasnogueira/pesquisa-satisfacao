@@ -1,8 +1,9 @@
-﻿using Pesquisa.SurveyApi.Models;
+﻿using Pesquisa.Core.Repository.Interface;
+using Pesquisa.SurveyApi.Models;
 
 namespace Pesquisa.SurveyApi.Interfaces;
 
-public interface ICustomerRepository
+public interface ICustomerRepository : IRepository<CustomerModel>
 {
     CustomerModel CreateCustomer(CustomerModel customer);
     IEnumerable<CustomerModel> GetCustomers();

@@ -1,15 +1,16 @@
-﻿using Pesquisa.SurveyApi.Context;
+﻿using Pesquisa.Core.Repository;
+using Pesquisa.SurveyApi.Context;
 using Pesquisa.SurveyApi.Interfaces;
 using Pesquisa.SurveyApi.Models;
 
 namespace Pesquisa.SurveyApi.Repository;
 
-public class EvaluationRepository : IEvaluationRepository
+public class EvaluationRepository : Repository<EvaluationModel> ,IEvaluationRepository
 {
     private readonly ILogger<EvaluationRepository> _logger;
     private readonly SurveyDbContext _dbContext;
 
-    public EvaluationRepository(ILogger<EvaluationRepository> logger, SurveyDbContext dbContext)
+    public EvaluationRepository(ILogger<EvaluationRepository> logger, SurveyDbContext dbContext) : base(dbContext)
     {
         _logger = logger;
         _dbContext = dbContext;

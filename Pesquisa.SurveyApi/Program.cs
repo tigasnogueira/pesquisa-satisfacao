@@ -7,7 +7,14 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Configurar Serilog
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .WriteTo.Console()
+    .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+// Adicionar serviços ao contêiner
 builder.Services.AddRazorPages();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -23,8 +30,6 @@ builder.Services.AddControllers(options =>
 {
     options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-
-
 });
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -33,16 +38,14 @@ builder.Services.ResolveDependencies();
 
 var app = builder.Build();
 
-// Configure Serilog
-Log.Logger = new LoggerConfiguration()
-    .MinimumLevel.Information()
-    .WriteTo.Console()
-    .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
-    .CreateLogger();
+// Adicionar middleware do Serilog para registrar informações de solicitações HTTP
+app.Use((context, next) =>
+{
+    Log.Information("Request received: {Method} {Path}", context.Request.Method, context.Request.Path);
+    return next();
+});
 
-app.UseSerilogRequestLogging(); // Para registrar informações de solicitações HTTP
-
-// Configure the HTTP request pipeline.
+// Configurar a pipeline de solicitação HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

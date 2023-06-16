@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Pesquisa.SurveyApi.Models;
 
 namespace Pesquisa.SurveyApi.Context;
 
-public class SurveyDbContext : DbContext
+public class SurveyDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
 {
     public SurveyDbContext(DbContextOptions<SurveyDbContext> options) : base(options)
     {

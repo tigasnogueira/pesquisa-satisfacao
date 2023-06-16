@@ -1,0 +1,28 @@
+2023-06-16 14:44:36.410 -03:00 [INF] User profile is available. Using 'C:\Users\Helyon\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-16 14:47:51.177 -03:00 [INF] User profile is available. Using 'C:\Users\Helyon\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-16 14:50:34.596 -03:00 [INF] User profile is available. Using 'C:\Users\Helyon\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-16 14:50:43.340 -03:00 [FTL] Application startup exception
+System.InvalidOperationException: Unable to resolve service for type 'Serilog.Extensions.Hosting.DiagnosticContext' while attempting to activate 'Serilog.AspNetCore.RequestLoggingMiddleware'.
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass5_0.<UseMiddleware>b__0(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2023-06-16 14:53:15.438 -03:00 [INF] User profile is available. Using 'C:\Users\Helyon\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-16 14:53:19.479 -03:00 [FTL] Application startup exception
+System.InvalidOperationException: Unable to resolve service for type 'Serilog.Extensions.Hosting.DiagnosticContext' while attempting to activate 'Serilog.AspNetCore.RequestLoggingMiddleware'.
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass5_0.<UseMiddleware>b__0(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2023-06-16 15:01:29.417 -03:00 [INF] Request received: GET /
+2023-06-16 15:01:35.554 -03:00 [INF] Request received: GET /lib/bootstrap/dist/css/bootstrap.min.css
+2023-06-16 15:01:35.560 -03:00 [INF] Request received: GET /css/site.css
+2023-06-16 15:01:35.560 -03:00 [INF] Request received: GET /Pesquisa.SurveyApi.styles.css
+2023-06-16 15:01:35.561 -03:00 [INF] Request received: GET /lib/jquery/dist/jquery.min.js
+2023-06-16 15:01:36.144 -03:00 [INF] Request received: GET /lib/bootstrap/dist/js/bootstrap.bundle.min.js
+2023-06-16 15:01:36.193 -03:00 [INF] Request received: GET /js/site.js
+2023-06-16 15:01:38.556 -03:00 [INF] Request received: GET /favicon.ico

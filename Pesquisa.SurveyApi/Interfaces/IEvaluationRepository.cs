@@ -1,8 +1,9 @@
-﻿using Pesquisa.SurveyApi.Models;
+﻿using Pesquisa.Core.Repository.Interface;
+using Pesquisa.SurveyApi.Models;
 
 namespace Pesquisa.SurveyApi.Interfaces;
 
-public interface IEvaluationRepository
+public interface IEvaluationRepository : IRepository<EvaluationModel>
 {
     EvaluationModel CreateEvaluation(EvaluationModel evaluation);
     IEnumerable<EvaluationModel> GetEvaluations();

@@ -1,15 +1,16 @@
-﻿using Pesquisa.SurveyApi.Context;
+﻿using Pesquisa.Core.Repository;
+using Pesquisa.SurveyApi.Context;
 using Pesquisa.SurveyApi.Interfaces;
 using Pesquisa.SurveyApi.Models;
 
 namespace Pesquisa.SurveyApi.Repository;
 
-public class CustomerRepository : ICustomerRepository
+public class CustomerRepository : Repository<CustomerModel>, ICustomerRepository
 {
     private readonly ILogger<CustomerRepository> _logger;
     private readonly SurveyDbContext _dbContext;
 
-    public CustomerRepository(ILogger<CustomerRepository> logger, SurveyDbContext dbContext)
+    public CustomerRepository(ILogger<CustomerRepository> logger, SurveyDbContext dbContext) : base(dbContext)
     {
         _logger = logger;
         _dbContext = dbContext;
