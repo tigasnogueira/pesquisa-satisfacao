@@ -12,17 +12,18 @@ using Pesquisa.SurveyApi.Context;
 namespace Pesquisa.SurveyApi.Migrations
 {
     [DbContext(typeof(SurveyDbContext))]
-    [Migration("20230614190309_SurveyDb_V1_1")]
-    partial class SurveyDb_V1_1
+    [Migration("20230617004112_SurveyDb_V1_0")]
+    partial class SurveyDb_V1_0
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.16")
+                .HasAnnotation("ProductVersion", "7.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("Pesquisa.SurveyApi.Models.CustomerModel", b =>
                 {

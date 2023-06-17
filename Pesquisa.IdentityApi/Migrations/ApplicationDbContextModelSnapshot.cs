@@ -190,11 +190,9 @@ namespace Pesquisa.IdentityApi.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Configuration")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
@@ -215,7 +213,6 @@ namespace Pesquisa.IdentityApi.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("JobTitle")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -248,7 +245,6 @@ namespace Pesquisa.IdentityApi.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UpdatedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")

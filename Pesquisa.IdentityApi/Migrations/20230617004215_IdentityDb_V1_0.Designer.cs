@@ -12,7 +12,7 @@ using Pesquisa.IdentityApi.Context;
 namespace Pesquisa.IdentityApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230616230105_IdentityDb_V1_0")]
+    [Migration("20230617004215_IdentityDb_V1_0")]
     partial class IdentityDb_V1_0
     {
         /// <inheritdoc />

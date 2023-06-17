@@ -4,7 +4,7 @@ using Pesquisa.SurveyApi.Models;
 
 namespace Pesquisa.SurveyApi.Context;
 
-public class SurveyDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
+public class SurveyDbContext : DbContext
 {
     public SurveyDbContext(DbContextOptions<SurveyDbContext> options) : base(options)
     {
