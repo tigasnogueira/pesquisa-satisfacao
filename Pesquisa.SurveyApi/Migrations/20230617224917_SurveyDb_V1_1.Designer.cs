@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pesquisa.SurveyApi.Context;
 
@@ -11,9 +12,11 @@ using Pesquisa.SurveyApi.Context;
 namespace Pesquisa.SurveyApi.Migrations
 {
     [DbContext(typeof(SurveyDbContext))]
-    partial class SurveyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230617224917_SurveyDb_V1_1")]
+    partial class SurveyDb_V1_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,9 +123,6 @@ namespace Pesquisa.SurveyApi.Migrations
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("CustomerModelId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("EvaluationDate")
                         .HasColumnType("datetime2");
 
@@ -142,21 +142,7 @@ namespace Pesquisa.SurveyApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerModelId");
-
                     b.ToTable("Evaluation", (string)null);
-                });
-
-            modelBuilder.Entity("Pesquisa.SurveyApi.Models.EvaluationModel", b =>
-                {
-                    b.HasOne("Pesquisa.SurveyApi.Models.CustomerModel", null)
-                        .WithMany("Evaluations")
-                        .HasForeignKey("CustomerModelId");
-                });
-
-            modelBuilder.Entity("Pesquisa.SurveyApi.Models.CustomerModel", b =>
-                {
-                    b.Navigation("Evaluations");
                 });
 #pragma warning restore 612, 618
         }

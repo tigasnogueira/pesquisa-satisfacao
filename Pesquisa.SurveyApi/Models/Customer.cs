@@ -27,6 +27,7 @@ public class CustomerModel : EntityModel
 
     public CustomerModel()
     {
+        Evaluations = new List<EvaluationModel>(); // Inicializa a coleção
         IsActive = true;
     }
 

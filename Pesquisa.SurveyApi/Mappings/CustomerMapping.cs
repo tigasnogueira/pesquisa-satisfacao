@@ -27,10 +27,6 @@ public class CustomerMapping : IEntityTypeConfiguration<CustomerModel>
         builder.Property(c => c.UpdatedAt).IsRequired();
         builder.Property(c => c.IsActive).IsRequired();
 
-        builder.HasMany(c => c.Evaluations) // Um cliente tem muitas avaliações
-            .WithOne(e => e.Customer) // Uma avaliação pertence a um cliente
-            .HasForeignKey(e => e.CustomerId); // Chave estrangeira para CustomerId
-
         builder.ToTable("Customer");
     }
 }

@@ -6,7 +6,6 @@ public class EvaluationModel : EntityModel
 {
     public DateTime EvaluationDate { get; set; }
     public Guid CustomerId { get; set; }
-    public CustomerModel Customer { get; set; }
     public int Score { get; set; }
     public string Reason { get; set; }
     public bool IsActive { get; set; }

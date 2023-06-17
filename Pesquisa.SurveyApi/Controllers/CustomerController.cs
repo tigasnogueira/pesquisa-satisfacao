@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Pesquisa.SurveyApi.Interfaces;
 using Pesquisa.SurveyApi.Models;
-using Pesquisa.SurveyApi.Services;
 
 namespace Pesquisa.SurveyApi.Controllers;
 
@@ -9,9 +9,10 @@ namespace Pesquisa.SurveyApi.Controllers;
 public class CustomerController : ControllerBase
 {
     private readonly ILogger<CustomerController> _logger;
-    private readonly CustomerService _customerService;
+    private readonly ICustomerService _customerService;
 
-    public CustomerController(ILogger<CustomerController> logger, CustomerService customerService)
+
+    public CustomerController(ILogger<CustomerController> logger, ICustomerService customerService)
     {
         _logger = logger;
         _customerService = customerService;

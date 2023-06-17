@@ -17,10 +17,6 @@ public class EvaluationMapping : IEntityTypeConfiguration<EvaluationModel>
         builder.Property(c => c.UpdatedAt).IsRequired();
         builder.Property(c => c.IsActive).IsRequired();
 
-        builder.HasOne(e => e.Customer) // Uma avaliação pertence a um cliente
-            .WithMany(c => c.Evaluations) // Um cliente tem muitas avaliações
-            .HasForeignKey(e => e.CustomerId); // Chave estrangeira para CustomerId
-
         builder.ToTable("Evaluation");
     }
 }

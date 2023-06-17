@@ -34,6 +34,7 @@ builder.Services.AddControllers(options =>
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+// Adicionar suas correções manualmente
 builder.Services.ResolveDependencies();
 
 var app = builder.Build();
@@ -60,5 +61,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.MapControllers();
 
 app.Run();
